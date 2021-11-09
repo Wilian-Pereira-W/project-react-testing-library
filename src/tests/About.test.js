@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-// import { MemoryRouter } from 'react-router-dom';
 import { About } from '../components';
 
 describe('Testa componente about.js', () => {
@@ -8,8 +7,8 @@ describe('Testa componente about.js', () => {
     render(
       <About />,
     );
-    const h2El = screen.getByRole('heading', { level: 2, name: 'About Pokédex' });
-    expect(h2El).toBeInTheDocument();
+    const headingEl = screen.getByRole('heading', { level: 2, name: 'About Pokédex' });
+    expect(headingEl).toBeInTheDocument();
   });
 
   test('Teste se a página contém dois parágrafos com texto sobre a Pokédex.', () => {
