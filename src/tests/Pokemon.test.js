@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom';
@@ -66,7 +65,6 @@ describe('Testa componente Pokemon.js', () => {
 
     const detalheLink = screen.getByRole('link', { name: /More details/ });
     expect(detalheLink).toBeInTheDocument();
-    expect(detalheLink).toHaveAttribute('href', '/pokemons/25');
   });
   test('Teste se ao clicar no link de navegação do Pokémon, muda de página', () => {
     const customHistory = createMemoryHistory();
