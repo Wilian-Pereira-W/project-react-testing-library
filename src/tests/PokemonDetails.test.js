@@ -6,6 +6,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 
 describe('Testa componente PokemonDetails.js', () => {
+  const link = '/pokemons/25';
   test('Teste se as informações detalhadas do Pokémon é mostradas na tela', () => {
     const customHistory = createMemoryHistory();
     render(
@@ -14,10 +15,11 @@ describe('Testa componente PokemonDetails.js', () => {
         ,
       </Router>,
     );
-    const detalheLink = screen.getByRole('link', { name: 'More details' });
+
+    const detalheLink = screen.getByRole('link', { name: /More details/ });
     expect(detalheLink).toBeInTheDocument();
     userEvent.click(detalheLink);
-    expect(customHistory.location.pathname).toBe('/pokemons/25');
+    expect(customHistory.location.pathname).toBe(link);
 
     const textoDetalhe = screen.getByText('Pikachu Details');
     expect(textoDetalhe).toBeInTheDocument();
@@ -42,7 +44,7 @@ describe('Testa componente PokemonDetails.js', () => {
     const detalheLink = screen.getByRole('link', { name: 'More details' });
     expect(detalheLink).toBeInTheDocument();
     userEvent.click(detalheLink);
-    expect(customHistory.location.pathname).toBe('/pokemons/25');
+    expect(customHistory.location.pathname).toBe(link);
 
     const headingEl = screen.getByRole('heading', { level: 2,
       name: 'Game Locations of Pikachu' });
@@ -82,7 +84,7 @@ describe('Testa componente PokemonDetails.js', () => {
     const detalheLink = screen.getByRole('link', { name: 'More details' });
     expect(detalheLink).toBeInTheDocument();
     userEvent.click(detalheLink);
-    expect(customHistory.location.pathname).toBe('/pokemons/25');
+    expect(customHistory.location.pathname).toBe(link);
 
     const checkboxFavorito = screen.getByRole('checkbox');
     expect(checkboxFavorito).toBeInTheDocument();
